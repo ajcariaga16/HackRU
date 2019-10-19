@@ -10,6 +10,7 @@ class Log extends React.Component {
       strength: '', //describes stomach strength
       weight: '', //describes weight
       feeling: '',
+      gender: '',
       numDrinks: '',
       loading: false,
       called: false,
@@ -19,6 +20,7 @@ class Log extends React.Component {
     this.updateStrengthInput = this.updateStrengthInput.bind(this)
     this.updateWeightInput = this.updateWeightInput.bind(this)
     this.resetInput = this.resetInput.bind(this)
+    this.updateGenderInput = this.updateGenderInput.bind(this)
 
   }
 
@@ -36,6 +38,7 @@ class Log extends React.Component {
       strength: '',
       weight: '',
       numDrinks: '',
+      gender: '',
       feeling: '',
       called: true,
     })
@@ -71,6 +74,12 @@ class Log extends React.Component {
     const value = e.target.value
     this.setState({
       numDrinks: value
+    })
+  }
+  updateGenderInput(e) {
+    const value = e.target.value
+    this.setState({
+      gender: value
     })
   }
 
@@ -127,6 +136,13 @@ class Log extends React.Component {
                 placeholder='Number of drinks'
                 value ={this.state.numDrinks}
                 onChange={this.updateNumDrinksInput}
+              />
+              <br/>
+              <input
+                type ='text'
+                placeholder='Gender (M or F)'
+                value ={this.state.gender}
+                onChange={this.updateGenderInput}
               />
               <br/>
               <button onClick={this.handleTakeInput}>Submit</button>

@@ -9,6 +9,7 @@ class Request extends React.Component {
       fullness: '', //describes how full they were
       strength: '', //describes stomach strength
       weight: '', //describes weight
+      gender: '',
       recommendation: 0,
       loading: false,
       called: false,
@@ -18,6 +19,7 @@ class Request extends React.Component {
     this.updateStrengthInput = this.updateStrengthInput.bind(this)
     this.updateWeightInput = this.updateWeightInput.bind(this)
     this.resetInput = this.resetInput.bind(this)
+    this.updateGenderInput = this.updateGenderInput.bind(this)
 
   }
 
@@ -34,6 +36,7 @@ class Request extends React.Component {
       fullness: '',
       strength: '',
       weight: '',
+      gender: '',
       recommendation: 5,
       called: true,
     })
@@ -57,6 +60,12 @@ class Request extends React.Component {
     const value = e.target.value
     this.setState({
       weight: value
+    })
+  }
+  updateGenderInput(e) {
+    const value = e.target.value
+    this.setState({
+      gender: value
     })
   }
   resetInput() {
@@ -99,6 +108,13 @@ class Request extends React.Component {
                 placeholder='Weight'
                 value ={this.state.weight}
                 onChange={this.updateWeightInput}
+              />
+              <br/>
+              <input
+                type ='text'
+                placeholder='Gender (M or F)'
+                value ={this.state.gender}
+                onChange={this.updateGenderInput}
               />
               <br/>
               <button onClick={this.handleTakeInput}>Submit</button>

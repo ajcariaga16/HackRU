@@ -16,7 +16,7 @@ const Header = ({ siteTitle }) => (
         textAlign: 'center',
       }}
     >
-      <h1 style={{ margin: 0, color: 'orange' }}>
+      <h1 style={{ margin: 0, color: 'orange', size: 900 }}>
         {siteTitle}
       </h1>
     </div>
