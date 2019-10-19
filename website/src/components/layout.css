@@ -8,6 +8,17 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.rowC {
+  display:flex;
+  flex-direction:row;
+}
+
+.LogComp > div {
+  margin-left: 200px;
+}
+
+
 article,
 aside,
 details,

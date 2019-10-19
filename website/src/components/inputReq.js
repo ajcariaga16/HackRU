@@ -17,9 +17,9 @@ class Request extends React.Component {
     this.updateFullnessInput = this.updateFullnessInput.bind(this)
     this.updateStrengthInput = this.updateStrengthInput.bind(this)
     this.updateWeightInput = this.updateWeightInput.bind(this)
+    this.resetInput = this.resetInput.bind(this)
 
   }
-
 
   /** HANDLE SENDING TO DATABASE AND RESETING FIELDS */
   handleTakeInput(fullness, strength, weight) {
@@ -31,9 +31,9 @@ class Request extends React.Component {
     */
     this.setState({
       loading: false,
-      fullness: 0,
-      strength: 0,
-      weight: 0,
+      fullness: '',
+      strength: '',
+      weight: '',
       recommendation: 5,
       called: true,
     })
@@ -59,29 +59,20 @@ class Request extends React.Component {
       weight: value
     })
   }
+  resetInput() {
+    this.setState({
+      called: false,
+    })
+  }
   render() {
     return(
 
       <div>
-        <h3>
-          Get your Drinking Recommendation
-        </h3>
       {this.state.called === true
         ? <div>
-            <ul>
-              <li>
-                {this.state.fullness}
-              </li>
-              <li>
-                {this.state.strength}
-              </li>
-              <li>
-                {this.state.weight}
-              </li>
-              <li>
-                {this.state.recommendation}
-              </li>
-            </ul>
+            You can take an estimated {this.state.recommendation} drinks before
+            throwing up.
+            <button onClick={this.resetInput}>Try another input</button>
         </div>
         : this.state.loading === true
           ? <Loading />
@@ -109,6 +100,7 @@ class Request extends React.Component {
                 value ={this.state.weight}
                 onChange={this.updateWeightInput}
               />
+              <br/>
               <button onClick={this.handleTakeInput}>Submit</button>
             </div>}
             </div>

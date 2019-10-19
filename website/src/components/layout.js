@@ -12,6 +12,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import Header from "./header"
 import Footer from './footer'
 import Request from './inputReq'
+import Log from './inputLog'
 import "./layout.css"
 
 const Layout = ({ children }) => {
@@ -37,7 +38,14 @@ const Layout = ({ children }) => {
         }}
       >
         <main>{children}</main>
-        <Request />
+        <div className='rowC'>
+          <Request />
+          <div className='LogComp'>
+            <Log />
+          </div>
+        </div>
+        <br/>
+
         <Footer />
       </div>
     </>
