@@ -1,9 +1,13 @@
+import com.sun.xml.internal.bind.v2.runtime.output.StAXExStreamWriterOutput;
 
 public class OneShotLearning {
 	
 	public static void main(String[] args) {
-		
-		float x1, x2, x3, x4, result; 
+		YAKData.getURL("http://localhost:3306");
+		System.out.println(YakSQLAccess.getYakData());
+
+
+		float x1, x2, x3, x4, result;
 		
 		
 		

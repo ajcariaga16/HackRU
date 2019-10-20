@@ -1,6 +1,21 @@
 import React from "react"
 import Loading from './loading'
 
+window.API = {
+      fetchNumDrinks(language = 'all') {
+        const encodedURI = encodeURI(`https://api.github.com/search/repositories?q=stars:>1+language:${language}&sort=stars&order=desc&type=Repositories`)
+
+        return fetch(encodedURI)
+          .then((data) => data.json())
+          .then((repos) => repos.items)
+          .catch((error) => {
+            console.warn(error)
+            return null
+          });
+      }
+    }
+
+
 class Request extends React.Component {
   constructor(props) {
     super(props);
@@ -31,6 +46,12 @@ class Request extends React.Component {
     /* when the promise is fulfilled and data is obtained (.then), setState.
       componentDidUpdate will trigger again, and render will trigger.
     */
+
+    encodeURIComponent(JSON.stringify([this.state.fullness,
+      this.state.weight, this.state.strength,
+      this.state.numDrinks, this.state.gender]))
+
+
     this.setState({
       loading: false,
       fullness: '',

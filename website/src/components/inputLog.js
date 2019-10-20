@@ -9,7 +9,6 @@ class Log extends React.Component {
       fullness: '', //describes how full they were
       strength: '', //describes stomach strength
       weight: '', //describes weight
-      feeling: '',
       gender: '',
       numDrinks: '',
       loading: false,
@@ -29,9 +28,14 @@ class Log extends React.Component {
     this.setState({
       loading: true
     })
+    
     /* when the promise is fulfilled and data is obtained (.then), setState.
       componentDidUpdate will trigger again, and render will trigger.
     */
+    encodeURIComponent(JSON.stringify([this.state.fullness,
+      this.state.weight, this.state.strength,
+      this.state.numDrinks, this.state.gender]))
+
     this.setState({
       loading: false,
       fullness: '',
@@ -39,7 +43,6 @@ class Log extends React.Component {
       weight: '',
       numDrinks: '',
       gender: '',
-      feeling: '',
       called: true,
     })
   }
@@ -62,12 +65,6 @@ class Log extends React.Component {
     const value = e.target.value
     this.setState({
       weight: value
-    })
-  }
-  updateFeelingInput(e) {
-    const value = e.target.value
-    this.setState({
-      feeling: value
     })
   }
   updateNumDrinksInput(e) {
@@ -126,9 +123,9 @@ class Log extends React.Component {
               <br/>
               <input
                 type ='text'
-                placeholder='How did you feel?'
-                value ={this.state.feeling}
-                onChange={this.updateFeelingInput}
+                placeholder='Gender (M or F)'
+                value ={this.state.gender}
+                onChange={this.updateGenderInput}
               />
               <br/>
               <input
@@ -136,13 +133,6 @@ class Log extends React.Component {
                 placeholder='Number of drinks'
                 value ={this.state.numDrinks}
                 onChange={this.updateNumDrinksInput}
-              />
-              <br/>
-              <input
-                type ='text'
-                placeholder='Gender (M or F)'
-                value ={this.state.gender}
-                onChange={this.updateGenderInput}
               />
               <br/>
               <button onClick={this.handleTakeInput}>Submit</button>

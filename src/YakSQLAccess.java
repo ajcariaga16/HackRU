@@ -26,7 +26,7 @@ public class YakSQLAccess {
 		try {
 			Connection myConn = DriverManager.getConnection(url, user, password);
 			Statement myStmt = myConn.createStatement();
-			String sql = "select * from YAKdata.contacts";
+			String sql = "select * from YAKData.contacts";
 			ResultSet rs = myStmt.executeQuery(sql);
 			
 			int rowCount = 0;
