@@ -1,5 +1,4 @@
 import java.sql.*;
-import java.util.ArrayList;
 
 public class YakSQLAccess {
 	private String url;
@@ -12,7 +11,7 @@ public class YakSQLAccess {
 		this.password = password;
 	}
 	
-	private int[][] copyArray(int[][] newarray, int[][] array) {
+	private float[][] copyArray(float[][] newarray, float[][] array) {
 		for (int i = 0; i < array.length; i++) {
 			for (int j = 0; j < 5; j++) {
 				newarray[i][j] = array[i][j];
@@ -21,8 +20,8 @@ public class YakSQLAccess {
 		return newarray;
 	}
 	
-	public int[][] getYakData() {
-		int[][] array = new int[100][5];
+	public float[][] getYakData() {
+		float[][] array = new float[100][5];
 		try {
 			Connection myConn = DriverManager.getConnection(url, user, password);
 			Statement myStmt = myConn.createStatement();
@@ -40,7 +39,7 @@ public class YakSQLAccess {
 					for(int j = 0; j<5; j++) {
 						//only if array is full
 						if (i == array.length - 1) {
-							int[][] newarray = new int[2*array.length][5];
+							float[][] newarray = new float[2*array.length][5];
 							array = copyArray(newarray, array);
 						}
 						//put values into array
